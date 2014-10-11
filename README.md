@@ -1,17 +1,19 @@
-# angular-dropdowns
+# angular-dropdown-Select
 
-Dropdown directives for AngularJS (1.1.5+, 1.2.x).
+Dropdown-Select directives for AngularJS (1.1.5+, 1.2.x).
 
-Includes both a select-style dropdown and a menu-style dropdown.  The menu-style dropdown attaches to an existing element (button, link, div, etc), whereas the select-style dropdown replaces the element it is attached to.
+This is an implementation of James Seppi's angular-dropdowns (https://github.com/jseppi/angular-dropdowns).  Currently, this version is stripped down to just a select-style dropdown more in line with ng-options.
 
-See examples: http://jsfiddle.net/jseppi/cTzun/53/embedded/result/
+It allows for ordering based off of an object property, and binds using ng-model typically to an id property.
+
+See examples: fiddler to come soon!
 
 ## Usage
 
-Include `ngDropdowns` in your module dependencies:
+Include `bwDropdownSelect` in your module dependencies:
 
 ```js
-var app = angular.module('app', ['ngDropdowns']);
+var app = angular.module('app', ['bwDropdownSelect']);
 ```
 
 In your controller, setup the select options and object to hold the selected value:
@@ -20,73 +22,67 @@ In your controller, setup the select options and object to hold the selected val
 app.controller('AppCtrl', function($scope) {
 
     // By default the 'text' property will be used as the display text in the dropdown entry.
-    // All options that are not dividers must have a 'text' property.
-    // Or you can specify a different property name via the dropdown-item-label attribute.
+    // Or you can specify a different property name via the select-option-label attribute.
     //
-    // If an options object has an 'href' property set, then that dropdown entry
-    //   will behave as a link and cannot be selected.
-    $scope.ddSelectOptions = [
-        {
-            text: 'Option1',
-            iconCls: 'someicon'
-        },
-        {
-            text: 'Option2',
-            someprop: 'somevalue'
-        },
-        {
-            // Any option with divider set to true will be a divider
-            // in the menu and cannot be selected.
-            divider: true
-        },
-        {
-            // Example of an option with the 'href' property
-            text: 'Option4',
-            href: '#option4'
-        }
-    ];
+    // By default the 'id' property will be used as the key
+    // Or you can specify a different property name via the select-option-key attribute.
+    //
+    // By default the orderby property will be the same as the display text.
+    // Optionally, you can set a differnt property to order by using the select-order-by attribute.
 
-    $scope.ddSelectSelected = {}; // Must be an object
+     $scope.ddSelectOptions = [
+        {
+          id: 1,
+          text: 'Option1',
+          value: 'one',
+          iconCls: 'someicon'
+        }, {
+          text: 'Option2',
+          someprop: 'somevalue'
+        }, {
+          id: 2,
+          text: 'Option4'
+        }
+      ];
+
+      $scope.ddSelectSelected = {
+        id: 2,
+        text: "Select an Option"
+      };
 });
 ```
 
-And in your html, specify the `dropdown-select` and `dropdown-model` attributes on an element.
+And in your html, specify the `bw-dropdown-select`, `select-options` and `ng-model` attributes on an element.
 
-You can optionally set `dropdown-item-label` to specify a different label field from the default (which is 'text'):
-
-```html
-<div ng-controller="AppCtrl">
-    <h1>Dropdown Select</h1>
-    <p>You have selected: {{ddSelectSelected}}</p>
-    <div dropdown-select="ddSelectOptions"
-        dropdown-model="ddSelectSelected"
-        dropdown-item-label="text" >
-    </div>
-</div>
-```
-
-For a menu-style dropdown, use `dropdown-menu` in place of `dropdown-select`:
+You can optionally set `select-option-label` to specify a different label field from the default (which is 'text'):
+You can optionally set `select-option-key` to specify a different key field from the default (which is 'id'):
+You can optionally set `select-order-by` to specify a different orderby field from the default (which is same as the label):
 
 ```html
 <div ng-controller="AppCtrl">
     <h1>Dropdown Select</h1>
     <p>You have selected: {{ddSelectSelected}}</p>
-    <a href='' title=''
-        dropdown-menu="ddSelectOptions"
-        dropdown-model="ddSelectSelected"
-        dropdown-item-label="text">
-        Menu
-    </a>
+      <div bw-dropdown-select
+           select-options="ddSelectOptions"
+           ng-model="ddSelectSelected.id"
+           select-order-by="id"
+           select-option-key="id"
+           select-option-label="text" >
+      </div>
 </div>
 ```
 
-You can specify a function to call upon dropdown value change by specifying the `dropdown-onchange` attribute. This method will have the selected object passed to it.
+
+You can specify a function to call upon dropdown value change by specifying the `on-change` attribute. This method will have the selected object passed to it.
 
 ```html
-<div dropdown-select="ddSelectOptions"
-    dropdown-model="ddSelectSelected"
-    dropdown-item-label="text"
-    dropdown-onchange="someMethod(selected)" >
+ <div bw-dropdown-select
+           select-options="ddSelectOptions"
+           ng-model="ddSelectSelected.id"
+           select-order-by="id"
+           select-option-key="id"
+           select-option-label="text"
+           on-change="someMethod(selected)" >
 </div>
 ```
 
