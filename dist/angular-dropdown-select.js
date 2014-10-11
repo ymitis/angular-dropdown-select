@@ -61,7 +61,7 @@ dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
                             return $scope.selectOptions[i];
                         }
                     }
-                }
+                };
             }],
 
             template: [
