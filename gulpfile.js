@@ -7,8 +7,8 @@ var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
 var stylish = require('jshint-stylish');
 
-var srcFile = 'angular-dropdowns.js';
-var srcCss = 'angular-dropdowns.css';
+var srcFile = 'angular-dropdown-select.js';
+var srcCss = 'angular-dropdown-select.css';
 var distDir = './dist';
 
 gulp.task('default', ['jshint', 'copy', 'uglify']);

@@ -1,28 +1,22 @@
 {
-  "name": "angular-dropdowns",
-  "version": "0.3.1",
+  "name": "angular-dropdown-select",
+  "version": "0.1.0",
   "author": {
-    "name": "James Seppi",
-    "email": "james.seppi@gmail.com",
-    "url": "http://www.github.com/jseppi"
+    "name": "Yanni",
+    "email": "",
+    "url": "http://www.github.com/ymits"
   },
-  "homepage": "https://github.com/jseppi/angular-dropdowns",
-  "bugs": "https://github.com/jseppi/angular-dropdowns/issues",
+  "homepage": "https://github.com/ymitis/angular-dropdown-select",
+  "bugs": "https://github.com/ymitis/angular-dropdown-select/issues",
   "keywords": ["angular", "dropdown", "menu", "select"],
-  "description": "AngularJS Dropdown Directives",
+  "description": "An AngularJS Dropdown Select Directive based on James Seppi's AngularJS Dropdowns (https://github.com/jseppi/angular-dropdowns).",
   "license": "MIT",
   "contributors": [
-    "eddimonge",
-    "JustMaier",
-    "ramiroaraujo",
-    "tlvince",
-    "dinodsaurus",
-    "elishacook",
-    "alexisbg"
+    "ymitis"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jseppi/angular-dropdowns.git"
+    "url": "https://github.com/ymitis/angular-dropdown-select.git"
   },
   "dependencies": {},
   "devDependencies": {

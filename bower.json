@@ -1,21 +1,14 @@
 {
-  "name": "angular-dropdowns",
-  "version": "0.3.1",
-  "homepage": "https://github.com/jseppi/angular-dropdowns",
+  "name": "angular-dropdown-select",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ymitis/angular-dropdown-select",
   "authors": [
-    "James Seppi <james.seppi@gmail.com> (http://github.com/jseppi)",
-    "eddimonge",
-    "JustMaier",
-    "ramiroaraujo",
-    "tlvince",
-    "dinodsaurus",
-    "elishacook",
-    "alexisbg"
+    "Yanni (http://github.com/ymitis)"
   ],
-  "description": "AngularJS Dropdown Directives",
+  "description": "An AngularJS Dropdown Select Directive based on James Seppi's AngularJS Dropdowns (https://github.com/jseppi/angular-dropdowns).",
   "main": [
-    "dist/angular-dropdowns.js",
-    "dist/angular-dropdowns.css"
+    "dist/angular-dropdown-select.js",
+    "dist/angular-dropdown-select.css"
   ],
   "keywords": [
     "angular",
