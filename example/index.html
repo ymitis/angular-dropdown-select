@@ -5,10 +5,10 @@
     <title>angular-dropdowns example</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="../dist/angular-dropdowns.css">
+    <link rel="stylesheet" href="../dist/angular-dropdown-select.css">
     <link rel="stylesheet" href="page.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-    <script type="text/javascript" src="../dist/angular-dropdowns.js"></script>
+    <script type="text/javascript" src="../dist/angular-dropdown-select.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body ng-app="app" style="margin-top:50px;">
@@ -16,9 +16,13 @@
       <div style="margin:0 auto; text-align:center;">
         <h1>Dropdown Select</h1>
         <p>You have selected: {{ddSelectSelected}}</p>
-        <div bw-dropdown-select="ddSelectOptions" ng-model="ddSelectSelected.id">
-
-        </div>
+          <div bw-dropdown-select
+               select-options="ddSelectOptions"
+               ng-model="ddSelectSelected.id"
+               select-order-by="id"
+               select-option-key="id"
+               select-option-label="text" >
+          </div>
         <hr>
 
       </div>

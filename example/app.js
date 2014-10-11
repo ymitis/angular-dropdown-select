@@ -13,11 +13,8 @@ app.controller('AppCtrl', function($scope) {
       text: 'Option2',
       someprop: 'somevalue'
     }, {
-      divider: true
-    }, {
       id: 2,
-      text: 'Option4',
-      href: 'http://www.google.com'
+      text: 'Option4'
     }
   ];
 
