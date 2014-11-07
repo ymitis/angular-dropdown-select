@@ -4,8 +4,8 @@
 'use strict';
 var dd = angular.module('bwDropdownSelect', []);
 
-dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
-    function (bwDropdownService, $window) {
+dd.directive('bwDropdownSelect', ['bwDropdownService', '$window', '$log',
+    function (bwDropdownService, $window, $log) {
         return {
             restrict: 'A',
             replace: true,
@@ -16,6 +16,7 @@ dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
             },
 
             controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+                $log.info('Model value is: ' + $scope.model);
                 $scope.keyField = $attrs.selectOptionKey || 'id';
                 $scope.labelField = $attrs.selectOptionLabel || 'text';
                 $scope.orderByField = $attrs.selectOrderBy || $scope.labelField;
@@ -33,13 +34,25 @@ dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
                 bwDropdownService.register($element);
 
                 this.select = function (selected) {
-                    if (selected[$scope.keyField] != $scope.model) {
-                        $scope.model = selected[$scope.keyField];
+                    if (typeof $scope.model === 'object') {
+                        if (selected != $scope.model) {
+                            $scope.model = selected;
 
-                        var itm = getSelectedItem();
+                            var itm = getSelectedItem();
 
-                        $scope.selectedLabel = itm[$scope.labelField];
+                            $scope.selectedLabel = itm[$scope.labelField];
+                        }
                     }
+                    else {
+                        if (selected[$scope.keyField] != $scope.model) {
+                            $scope.model = selected[$scope.keyField];
+
+                            var itm = getSelectedItem();
+
+                            $scope.selectedLabel = itm[$scope.labelField];
+                        }
+                    }
+
                     $scope.onChange({
                         selected: selected
                     });
@@ -56,8 +69,16 @@ dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
                 });
 
                 function getSelectedItem() {
+                    if(!$scope.selectOptions) return;
+                    
                     for(var i = 0; i < $scope.selectOptions.length; i++) {
-                        if ($scope.selectOptions[i][$scope.keyField] == $scope.model){
+                        if(typeof $scope.model --- 'object') {
+                            if ($scope.selectOptions[i] == $scope.model) {
+                                return $scope.selectOptions[i];
+                            }
+                        }
+
+                        if ($scope.selectOptions[i][$scope.keyField] == $scope.model) {
                             return $scope.selectOptions[i];
                         }
                     }
