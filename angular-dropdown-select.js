@@ -33,7 +33,7 @@ dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
                 bwDropdownService.register($element);
 
                 this.select = function (selected) {
-                    if (selected[$scope.keyField] != $scope.model) {
+                    if (selected[$scope.keyField] !== $scope.model) {
                         $scope.model = selected[$scope.keyField];
 
                         var itm = getSelectedItem();
@@ -57,7 +57,7 @@ dd.directive('bwDropdownSelect', ['bwDropdownService', '$window',
 
                 function getSelectedItem() {
                     for(var i = 0; i < $scope.selectOptions.length; i++) {
-                        if ($scope.selectOptions[i][$scope.keyField] == $scope.model){
+                        if ($scope.selectOptions[i][$scope.keyField] === $scope.model){
                             return $scope.selectOptions[i];
                         }
                     }
